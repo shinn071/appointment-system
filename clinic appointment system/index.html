@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>Campus Clinic — Your Health, Our Priority</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="static/app.js" defer></script>
+</head>
+<body>
+  <div id="login-screen" class="login-screen">
+    <section class="login-intro">
+      <a class="brand brand-large" href="#" aria-label="Campus Clinic home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span>
+        <span>Campus <strong>Clinic</strong></span>
+      </a>
+      <div class="intro-copy">
+        <span class="eyebrow">UNIVERSITY HEALTH SERVICES</span>
+        <h1>Your health,<br>our priority.</h1>
+        <p>A calmer, simpler way to connect with your campus clinic. Find available services and manage appointments in one place.</p>
+        <div class="intro-note"><span class="note-icon">+</span><span><strong>Here for your wellbeing</strong><br>Care and support, right on campus.</span></div>
+      </div>
+      <div class="intro-decoration decoration-one"></div><div class="intro-decoration decoration-two"></div>
+      <span class="intro-footer">A healthier campus starts here.</span>
+    </section>
+    <section class="login-side">
+      <form id="login-form" class="login-card">
+        <span class="eyebrow">WELCOME TO CAMPUS CLINIC</span>
+        <h2>Sign in to your account</h2>
+        <p class="muted login-subtitle">Use your email address to continue.</p>
+        <label for="login-email">Email address</label>
+        <div class="input-wrap"><span class="input-icon" aria-hidden="true">✉</span><input id="login-email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+        <label for="login-password">Password</label>
+        <div class="input-wrap"><span class="input-icon" aria-hidden="true">⌑</span><input id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password" maxlength="128" required><button class="password-toggle" type="button" data-toggle-password="login-password" aria-label="Show password">Show</button></div>
+        <button class="button button-primary button-full" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        <p id="login-message" class="form-message" aria-live="polite"></p>
+        <div id="firebase-signin-section" class="firebase-signin-section hidden">
+          <div class="login-divider"><span>or</span></div>
+          <button id="firebase-google-login" class="button button-secondary button-full" type="button">Continue with Google</button>
+          <p id="firebase-login-message" class="form-message" aria-live="polite"></p>
+        </div>
+        <p class="login-register">New to Campus Clinic? <a href="#" id="register-link">Create an account</a></p>
+        <p class="demo-note">Your account is securely authenticated by the campus clinic server.</p>
+      </form>
+      <form id="register-form" class="login-card hidden">
+        <span class="eyebrow">JOIN YOUR CAMPUS CLINIC</span>
+        <h2>Create your account</h2>
+        <p class="muted login-subtitle">Register with your account details to get started.</p>
+        <label for="register-name">Full name</label>
+        <div class="input-wrap"><input id="register-name" type="text" placeholder="Your full name" autocomplete="name" required></div>
+        <label for="register-id">School ID or employee ID</label>
+        <div class="input-wrap"><input id="register-id" type="text" placeholder="Your campus ID" required></div>
+        <label for="register-email">Email address</label>
+        <div class="input-wrap"><input id="register-email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+        <label for="register-password">Password</label>
+        <div class="input-wrap"><input id="register-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" maxlength="128" pattern="(?=.*[0-9])(?=.*[^A-Za-z0-9\s]).{8,}" title="Use 8–128 characters, including a number and a symbol." required><button class="password-toggle" type="button" data-toggle-password="register-password" aria-label="Show password">Show</button></div>
+        <p class="password-hint">At least 8 characters, including a number and a symbol.</p>
+        <label for="register-role">Account type</label>
+        <select id="register-role" class="field-control" required><option value="Student">Student</option><option value="Faculty">Faculty</option></select>
+        <button class="button button-primary button-full" type="submit" style="margin-top:20px">Create account <span aria-hidden="true">→</span></button>
+        <p id="register-message" class="form-message" aria-live="polite"></p>
+        <p class="login-register">Already have an account? <a href="#" id="login-link">Sign in</a></p>
+        <p class="demo-note">Google sign-in requires an existing clinic account with the same verified email address. Administrator and clinic staff accounts are assigned by an authorized administrator.</p>
+      </form>
+    </section>
+  </div>
+
+  <div id="app-shell" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar">
+      <a class="brand" href="#" data-page="dashboard">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span>
+        <span>Campus <strong>Clinic</strong></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav id="sidebar-nav" class="sidebar-nav" aria-label="Main navigation"></nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-help"><span class="help-icon">i</span><div><strong>Need help?</strong><span>Contact campus health services.</span></div></div>
+        <button class="nav-link logout-link" id="logout-button"><span class="nav-icon" aria-hidden="true">↪</span><span>Sign out</span></button>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-left"><button id="menu-toggle" class="icon-button mobile-menu" aria-label="Open navigation">☰</button><div><div class="breadcrumb">Campus Clinic <span>/</span> <strong id="breadcrumb-current">Dashboard</strong></div><h1 id="page-title">Dashboard</h1></div></div>
+        <div class="topbar-actions">
+          <button id="notification-button" class="icon-button notification-button" aria-label="Notifications">♧<span id="notification-dot" class="notification-dot"></span></button>
+          <button id="profile-button" class="profile-button"><span class="avatar" id="user-avatar">JS</span><span class="profile-copy"><strong id="user-name">Jordan Smith</strong><small id="user-role">Student</small></span><span class="chevron">⌄</span></button>
+        </div>
+        <div id="profile-menu" class="popover profile-menu hidden"><div class="popover-heading">Signed in</div><p id="profile-summary" class="muted">Your account role is managed by an authorized administrator.</p></div>
+        <div id="notification-popover" class="popover notification-popover hidden"><div class="popover-heading">Notifications</div><p class="muted">You're all caught up. New appointment updates will appear here.</p></div>
+      </header>
+      <main id="main-content" class="main-content" tabindex="-1"></main>
+      <footer class="page-footer"><span>Campus Clinic</span><span>Supporting a healthier campus community</span></footer>
+    </div>
+    <div id="sidebar-scrim" class="sidebar-scrim"></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

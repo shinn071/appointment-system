@@ -1,0 +1,1 @@
+window.CAMPUS_CLINIC_FIREBASE_CONFIG = {"apiKey":"AIzaSyBxQI6mQ1F009TNqLaBhpBX2xDBzBtAelU","authDomain":"clinic-appointment-syste-89561.firebaseapp.com","projectId":"clinic-appointment-syste-89561","appId":"1:948241625972:web:dd71ea446b20bc46fbb221"};

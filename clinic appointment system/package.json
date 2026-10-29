@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "node scripts/build-hosting.js"
+  },
+  "dependencies": {
+    "firebase": "^13.1.0"
+  }
+}
